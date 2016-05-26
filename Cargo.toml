@@ -1,0 +1,11 @@
+[package]
+name = "pnml-parser"
+version = "0.1.0"
+authors = ["Samuel Pastva <daemontus@gmail.com>"]
+
+[lib]
+name = "pnml"
+path = "src/lib.rs"
+
+[dependencies]
+xml-rs = "0.3.2"
