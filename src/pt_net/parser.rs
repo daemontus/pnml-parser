@@ -20,6 +20,7 @@ pub fn read_pt_file(file_name: &String) -> Net {
     parse_file(file_name, read_pt_net)
 }
 
+///Read net type and id
 fn read_net<T: Read>(parser: &mut EventReader<T>, event: &XmlEvent) -> Net {
     match event {
         &StartElement { ref name, ref attributes, .. } if name.local_name == "net" => {
@@ -36,6 +37,7 @@ fn read_net<T: Read>(parser: &mut EventReader<T>, event: &XmlEvent) -> Net {
     }
 }
 
+///Read the list of elements inside a net tag
 fn read_elements<T: Read>(parser: &mut EventReader<T>) -> Vec<Element>  {
     collect_until("net", parser, |p, event| {
         match event {
