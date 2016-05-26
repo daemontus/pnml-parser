@@ -77,13 +77,6 @@ pub fn expect_tag_close<T: Read>(tag: &str, parser: &mut EventReader<T>) {
     }
 }
 
-///Comsume parser evnets until the next opening tag is encountered
-pub fn next_tag_open<T: Read>(parser: &mut EventReader<T>) -> String {
-    drop_until(parser, |_, e| match_start_name(e)).unwrap_or_else( ||
-        panic!("Can't find next start tag")
-    )
-}
-
 ///Comsume parser events until the next text event is encountered
 pub fn next_text<T: Read>(parser: &mut EventReader<T>) -> String {
     drop_until(parser, |_, e| match_text(e)).unwrap_or_else( ||
@@ -104,14 +97,6 @@ pub fn drop_until<T, F, R>(parser: &mut EventReader<T>, test: F) -> Option<R>
             }
             e => panic!("Error reading document: {:?}", e),
         }
-    }
-}
-
-///Get name of the starting tag if avaiable
-pub fn match_start_name(event: &XmlEvent) -> Option<String> {
-    match event {
-        &StartElement { ref name, .. } => Some(name.local_name.clone()),
-        _ => None
     }
 }
 
