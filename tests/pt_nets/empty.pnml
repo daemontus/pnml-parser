@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="empty-net" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <page id="page0">
+    </page>
+  </net>
+</pnml>

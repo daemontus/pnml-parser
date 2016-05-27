@@ -6,7 +6,7 @@ use xml::reader::XmlEvent::*;
 use xml::attribute::OwnedAttribute;
 
 /// Parse an XML file using the given function
-pub fn parse_file<F, R>(name: &String, action: F) -> R
+pub fn parse_file<F, R>(name: &str, action: F) -> R
     where F: Fn(&mut EventReader<BufReader<File>>) -> R {
     let file = File::open(name).unwrap();
     let file = BufReader::new(file);

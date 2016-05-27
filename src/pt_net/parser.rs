@@ -16,7 +16,7 @@ pub fn read_pt_net<T: Read>(parser: &mut EventReader<T>) -> Net {
 }
 
 ///Read a PT Net from a PNML file
-pub fn read_pt_file(file_name: &String) -> Net {
+pub fn read_pt_file(file_name: &str) -> Net {
     parse_file(file_name, read_pt_net)
 }
 
@@ -78,7 +78,7 @@ fn read_arc<T: Read>(attributes: &Vec<OwnedAttribute>, parser: &mut EventReader<
                     .expect("Found arc with no ID."),
         source: find_attribute("source", attributes)
                     .expect("Found arc with no source ID."),
-        target: find_attribute("starget", attributes)
+        target: find_attribute("target", attributes)
                     .expect("Found arc with no target ID."),
         inscription: find_until("inscription", "arc", parser, next_text)
                     .unwrap_or("1".to_string()).parse()

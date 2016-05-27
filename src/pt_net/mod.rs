@@ -27,6 +27,23 @@ pub enum Element {
 
 impl Element {
 
+    pub fn new_place(id: &str, initial_marking: u32) -> Element {
+        Element::Place { id: id.to_string(), initial_marking: initial_marking }
+    }
+
+    pub fn new_transition(id: &str) -> Element {
+        Element::Transition { id: id.to_string() }
+    }
+
+    pub fn new_arc(id: &str, source: &str, target: &str, inscription: u32) -> Element {
+        Element::Arc {
+            id: id.to_string(),
+            source: source.to_string(),
+            target: target.to_string(),
+            inscription: inscription,
+        }
+    }
+
     pub fn is_place(&self) -> bool {
         match self {
             &Element::Place { .. } => true,
